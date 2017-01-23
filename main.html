@@ -15,7 +15,7 @@
     {{> addPlayerForm}}
     <ul>
 	    {{#each player}}
-	        <li class="player {{selectedClass}} ">{{name}}: {{score}}</li>
+	        <li class="player {{selectedClass}} ">{{name}}: {{score}}: {{status}}</li>
 	    {{/each}}
 	    
 		{{singleItem}}
@@ -38,6 +38,8 @@
 	</ul>
 	
 	<button class="remove"> Remove Player </button>
+	<button class="clearCall"> Clear call </button>
+	<button class="setCall"> Set call </button>
 {{else}}
     <p> you must be logged-in to see this content</p>
 {{/if}}	
