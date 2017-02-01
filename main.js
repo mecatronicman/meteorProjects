@@ -3,10 +3,22 @@
 
 //import './main.html';
 
+Router.configure({
+  
+  template: 'noRoutesTemplate'
+
+  // .
+  // .
+  // .
+});
+
+Router.route('/', {
+    template: 'home'
+});
 
 PlayerList = new Mongo.Collection('players');
 //UserAccounts = new Mongo.Collection('users');
-var waiterId_00 = 'mEpKKj2z9ts6gaJc3';
+var waiterId_00 = 'M5DBDy4vYCgToxtPd';
 
 if(Meteor.isClient){
 //code runs in the client only
@@ -86,11 +98,11 @@ if(Meteor.isClient){
 		},
 		
 		'click .clearCall' : function(){
-		    PlayerList.update({_id: waiterId_00}, {$set: {status: 'unset'} });
+		    PlayerList.update({_id: waiterId_00}, {$set: {status: 'no called'} });
 		},
 		
 		'click .setCall' : function(){
-		    PlayerList.update({_id: waiterId_00}, {$set: {status: 'set'} });
+		    PlayerList.update({_id: waiterId_00}, {$set: {status: 'called'} });
 		},
 		
 		
@@ -110,7 +122,7 @@ if(Meteor.isClient){
 			    name: playerNameVar,
 			    score: 0,
 				createdBy: currentUserId,
-				status: 'unset'
+				status: 'no called'
 				
 			});
 			
@@ -137,9 +149,9 @@ if(Meteor.isClient){
 			//var setFlag = PlayerList.findOne({_id:'mEpKKj2z9ts6gaJc3'}, {fields: {'status': 1}});
 			var setFlag = PlayerList.findOne(waiterId_00).status;
 			console.log(setFlag);
-			if(setFlag == "set"){
+			if(setFlag == "called"){
 			    var sound = new Howl({
-                  urls: ['sncf.mp3']
+                  urls: ['carlosTableThree.mp3']
                 });
 			    sound.play();
 			}
@@ -180,7 +192,7 @@ if(Meteor.isServer){
         //
 		//  	});
 		
-		PlayerList.update({_id: name_t}, {$set: {status: 'set'} });
+		PlayerList.update({_id: name_t}, {$set: {status: 'called'} });
 			
         
         this.response.statusCode = 200;

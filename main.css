@@ -2,3 +2,8 @@
 .selected{
     background-color: yellow;
 }	
+
+.spaced-group {
+	margin-top: 15px; 
+	margin-bottom: 60px; 
+}

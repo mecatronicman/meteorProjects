@@ -1,54 +1,95 @@
 <head>
-    <title>Leaderboard</title>
+    <title>restaurant app</title>
 </head>
+
+
 <body>
-    <h1>Leaderboard</h1>
-	{{> leaderboard}}
+  <div class = "container">
+    <div class ="col-xs-4">
+      <h1>Tonnys Pasta</h1>
+	  {{> leaderboard}}
 	
-	<p>{{> loginButtons}}</p>
+	  <p>{{> loginButtons}}</p>
+	</div>  
+  </div> 
 </body>
+
+
+<template name="home">
+<div class = "container">
+    <div class ="col-xs-4">
+    <h6>Copyright MCM-IoT</h6>
+	</div>  
+  </div> 	
+</template>
 
 
 
 <template name="leaderboard">
-{{#if currentUser}}
-    {{> addPlayerForm}}
-    <ul>
-	    {{#each player}}
-	        <li class="player {{selectedClass}} ">{{name}}: {{score}}: {{status}}</li>
-	    {{/each}}
-	    
-		{{singleItem}}
-		
-		{{otherHelperFunction}}
-		
-		{{#if selectedPlayer}}
-		<li>
-		    <button class="increment">
-	             Give 5 Points
-	        </button>
-			
-			<button class="decrement">
-			     take 5 points
-			</button>
-		</li>
-		
-		<li> Selected Player : {{selectedPlayer.name}} </li>
-		{{/if}}
-	</ul>
 	
-	<button class="remove"> Remove Player </button>
-	<button class="clearCall"> Clear call </button>
-	<button class="setCall"> Set call </button>
-{{else}}
+    {{#if currentUser}}
+    {{> addPlayerForm}}
+      
+        <!-- <ul class="list-group"> -->
+	        <!-- {{#each player}} -->
+	            
+				<table class="table table-bordered"> 
+				<tbody>
+				  {{#each player}}
+				    <tr>
+				      <td class="  player {{selectedClass}} ">{{name}} </td>
+					  <td class="  player {{selectedClass}} ">{{status}} </td>
+				    </tr>
+				  {{/each}}
+				</tbody>  
+				<!--  <li class="list-group-item  player {{selectedClass}} ">{{name}}: {{score}}: {{status}}</li>  -->
+				<!--  <li class="list-group-item  player {{selectedClass}} ">{{name}}: {{status}}</li>  -->
+				</table>
+	        <!-- {{/each}} -->
+	        
+	    	<!--  {{singleItem}}  -->
+	    	
+	    	<!-- {{otherHelperFunction}} -->
+	    	
+			<!--
+	    	{{#if selectedPlayer}}
+	    	    <li class="list-group-item">
+	    	        <button class="increment">
+	                     Give 5 Points
+	                </button>
+	    	    	
+	    	    	<button class="decrement">
+	    	    	     take 5 points
+	    	    	</button>
+	    	    </li>
+	    	    
+	    	    <li class="list-group-item"> Selected Player : {{selectedPlayer.name}} </li>
+	    	{{/if}}
+			-->
+	    <!-- </ul> -->
+     
+	<div class="form-group"> 
+	  <button class="remove btn btn-danger"> Remove Waiter </button>
+	  <button class="clearCall btn btn-warning"> Uncall Waiter </button>
+	  <button class="setCall btn btn-success"> call Waiter </button>
+	</div>  
+   {{else}}
     <p> you must be logged-in to see this content</p>
-{{/if}}	
+   {{/if}}	
+
+  
 </template>
 
 <template name= "addPlayerForm">
+	
   <form>
-    <input type="text" name="playerName">
-	<input type="submit" value="Add Player">
+    <div class="form-group">
+     <input type="text" class ="form-control" name="playerName">
+	</div>
+	<div class="form-group spaced-group">
+	 <input class ="btn btn-primary " type="submit" value="Add Waiter">
+    </div> 
   </form>
+ 
 </template>
 
